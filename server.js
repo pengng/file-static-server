@@ -6,6 +6,7 @@ var server = http.createServer(function (req, res) {
   control.init()
 })
 
-server.listen(8000, function () {
-  console.log('server start at ' + 8000)
+var port = process.argv[2]
+server.listen(port, function () {
+  console.log('server start at ' + port)
 })

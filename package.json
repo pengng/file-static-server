@@ -1,7 +1,10 @@
 {
-  "name": "static-server",
+  "name": "file-static-server",
   "version": "1.0.0",
-  "description": "static server",
+  "description": "file static server",
+  "bin": {
+    "file-static-server": "./bin/file-static-server"
+  },
   "main": "index.js",
   "directories": {
     "lib": "lib",
@@ -9,6 +12,8 @@
   },
   "dependencies": {
     "async": "^2.5.0",
+    "commander": "^2.11.0",
+    "ejs": "^2.5.7",
     "mime": "^1.3.6"
   },
   "devDependencies": {

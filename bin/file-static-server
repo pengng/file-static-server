@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+var path = require('path')
+var program = require('commander')
+var package = require('../package')
+var cp = require('child_process')
+
+program
+  .version(package.version)
+  .usage('[options] <path>')
+  .option('-P, --port [port]', 'The port to listen')
+  .parse(process.argv)
+
+var port = 8080
+if (program.port) {
+  port = program.port
+}
+var lastArgs = process.argv.pop()
+var publicPath = ''
+if (/^\//.test(lastArgs)) {
+  publicPath = lastArgs
+} else {
+  publicPath = path.join(process.cwd(), lastArgs)
+}
+try {
+  fs.accessSync(publicPath)
+} catch(err) {
+  publicPath = process.cwd()
+}
+var child = cp.execFile('node', [path.join(__dirname, '../server'), port, publicPath])
+child.stdout.pipe(process.stdout)
+child.stderr.pipe(process.stderr)

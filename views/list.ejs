@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Static Server</title>
+</head>
+<body>
+  <h1><%= current %></h1>
+  <ul>
+      <li>
+        <a href="<%= current %>">.</a>
+      </li>
+      <li>
+        <a href="<%= parent %>">..</a>
+      </li>
+    <% for (var i = 0; i < data.length; i++) { %>
+      <li>
+        <a href="<%= current + data[i] %>"><%= data[i] %></a>
+      </li>
+    <% } %>
+  </ul>
+</body>
+</html>
