@@ -8,5 +8,5 @@ server.on('request', function (req, res) {
 })
 
 server.listen(8000, function () {
-  console.log('server start at ', server)
+  console.log('server start at ' + 8000)
 })
