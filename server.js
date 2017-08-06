@@ -1,10 +1,9 @@
 var http = require('http')
-var static = require('./index')
-var path = require('path')
+var Control = require('./lib/control')
 
-var server = http.createServer(static(path.join(__dirname, 'public')))
-server.on('request', function (req, res) {
-  // res.end('success')
+var server = http.createServer(function (req, res) {
+  var control = new Control(req, res)
+  control.init()
 })
 
 server.listen(8000, function () {
